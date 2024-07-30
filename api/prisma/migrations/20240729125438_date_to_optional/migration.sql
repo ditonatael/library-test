@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `users` MODIFY `endBorrowDate` DATETIME(3) NULL,
+    MODIFY `startBorrowDate` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3);

@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const booksController_1 = require("./booksController");
+const Token_1 = require("../../helpers/Token");
+const router = (0, express_1.Router)();
+router.get('/', booksController_1.showAllBooks);
+router.post('/borrow-a-book', Token_1.tokenVerify, booksController_1.borrowABook);
+router.post('/my-book', Token_1.tokenVerify, booksController_1.myBook);
+router.put('/return-borrowed-book', Token_1.tokenVerify, booksController_1.returnBorrowedBook);
+router.get('/borrowed-book', Token_1.tokenVerify, booksController_1.allBorrowedBook);
+exports.default = router;

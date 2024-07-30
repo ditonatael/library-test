@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const signinController_1 = require("./signinController");
+const signinValidator_1 = require("../../../middleware/validator/auth/signinValidator");
+const handleErrorExpressValidator_1 = require("../../../middleware/validator/handleErrorExpressValidator");
+const Token_1 = require("../../../helpers/Token");
+const router = (0, express_1.Router)();
+router.post('/', signinValidator_1.SigninValidator, handleErrorExpressValidator_1.handleErrorValidator, signinController_1.signin);
+router.post('/persist', Token_1.tokenVerify, signinController_1.persistSignin);
+exports.default = router;
